@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شات AI للمذاكرة</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#0d0030,#000);
+color:white;
+text-align:center;
+}
+
+.container{
+margin-top:50px;
+}
+
+#chatBox{
+width:90%;
+height:400px;
+margin:20px auto;
+background:#1a0057;
+overflow-y:auto;
+padding:10px;
+border-radius:10px;
+}
+
+input, button{
+padding:10px;
+margin:5px;
+border-radius:10px;
+border:none;
+font-size:16px;
+}
+
+button{
+background:#3a1c71;
+color:white;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>شات AI للمذاكرة 🤖</h1>
+
+<div class="container">
+<div id="chatBox"></div>
+
+<input type="text" id="userInput" placeholder="اكتب سؤالك هنا">
+<button onclick="sendMessage()">إرسال</button>
+</div>
+
+<script>
+function sendMessage(){
+let input = document.getElementById('userInput').value;
+let chatBox = document.getElementById('chatBox');
+
+if(input.trim() === "") return;
+
+chatBox.innerHTML += "<p><b>أنت:</b> " + input + "</p>";
+
+// مؤقت – ده هيرد برد جاهز مؤقت
+chatBox.innerHTML += "<p><b>AI:</b> جاري الرد...</p>";
+
+document.getElementById('userInput').value = "";
+chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script>
+
+</body>
+</html>
