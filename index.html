@@ -1,64 +1,62 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mahmoud AI</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صديق الوحدة</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0d6efd, #00c6ff);
-      color: white;
+      background-color: #000000; /* أسود */
+      color: #FFD700; /* ذهبي */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
     }
 
-    header {
-      padding: 40px 20px;
-      font-size: 28px;
-      font-weight: bold;
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
     }
 
     button {
-      padding: 15px 25px;
-      font-size: 18px;
+      padding: 15px 30px;
+      font-size: 20px;
       border: none;
       border-radius: 10px;
-      background: white;
-      color: #0d6efd;
+      background-color: #FFD700; /* ذهبي */
+      color: #000;
       cursor: pointer;
-      margin-top: 20px;
+      font-weight: bold;
     }
 
     button:hover {
       opacity: 0.9;
     }
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding: 10px;
-      font-size: 14px;
-      background: rgba(0,0,0,0.2);
+    .ceo {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    Welcome to Mahmoud AI
-  </header>
+  <h1>أهلا بك في صديق الوحدة</h1>
 
-  <p>Your smart AI assistant</p>
+  <button onclick="location.href='chat.html'">Start Chat</button>
 
-  <button onclick="location.href='chat.html'">
-    Start Chat
-  </button>
-
-  <footer>
-    Founded by Mahmoud Khaled
-  </footer>
+  <div class="ceo">
+    CEO & Co-Founder<br>
+    حوده<br>
+    زوز باشا
+  </div>
 
 </body>
 </html>
