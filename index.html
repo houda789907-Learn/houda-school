@@ -13,6 +13,27 @@ body{
   color:#FFD700;
   text-align:center;
   overflow:hidden;
+  position:relative;
+}
+
+/* ===== GOLD BACKGROUND GLOW ===== */
+
+body::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(255,215,0,0.25) 0%, rgba(0,0,0,0) 70%);
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  animation: glowMove 6s infinite alternate ease-in-out;
+  z-index:0;
+}
+
+@keyframes glowMove{
+  0%{ transform:translate(-50%, -50%) scale(1); }
+  100%{ transform:translate(-50%, -50%) scale(1.2); }
 }
 
 /* ===== INTRO ===== */
@@ -45,7 +66,11 @@ body{
 #introText{
   font-size:32px;
   font-weight:bold;
-  white-space:nowrap; /* يخلي الكلام في سطر واحد */
+  white-space:nowrap;
+  text-shadow:
+    0 0 10px #FFD700,
+    0 0 20px #FFD700,
+    0 0 40px #FFA500;
 }
 
 /* ===== MAIN ===== */
@@ -58,6 +83,17 @@ body{
   justify-content:center;
   align-items:center;
   position:relative;
+  z-index:1;
+}
+
+#welcome{
+  font-size:34px;
+  font-weight:bold;
+  margin-bottom:25px;
+  text-shadow:
+    0 0 10px #FFD700,
+    0 0 20px #FFD700,
+    0 0 35px #FFA500;
 }
 
 #startBtn{
@@ -69,17 +105,27 @@ body{
   color:black;
   font-weight:bold;
   cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 15px #FFD700;
+}
+
+#startBtn:hover{
+  box-shadow:0 0 25px #FFD700, 0 0 40px #FFA500;
+  transform:scale(1.05);
 }
 
 .footer{
   position:absolute;
-  bottom:30px;
+  bottom:90px;
   text-align:center;
 }
 
 .footer div{
   font-size:20px;
   margin:5px 0;
+  text-shadow:
+    0 0 8px #FFD700,
+    0 0 15px #FFA500;
 }
 </style>
 </head>
@@ -97,6 +143,9 @@ body{
 
 <!-- MAIN -->
 <div id="main">
+
+  <div id="welcome">أهلا بك في Gango AI</div>
+
   <button id="startBtn" onclick="location.href='chat.html'">START CHAT</button>
 
   <div class="footer">
@@ -104,19 +153,18 @@ body{
     <div>حوده</div>
     <div>زوز باشا</div>
   </div>
+
 </div>
 
 <script>
 
 window.onload = function(){
 
-  // حركة السداسيين
   setTimeout(()=>{
     document.getElementById("hex1").style.transform="translateX(-150px)";
     document.getElementById("hex2").style.transform="translateX(150px)";
   },300);
 
-  // بعد 2.5 ثانية تختفي الانيميشن
   setTimeout(()=>{
     document.getElementById("intro").style.display="none";
     document.getElementById("main").style.display="flex";
