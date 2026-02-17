@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -21,7 +20,7 @@
 
     h1 {
       font-size: 36px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: #FFD700;
     }
 
@@ -34,11 +33,11 @@
       font-weight: bold;
       font-size: 18px;
       cursor: pointer;
-      margin-bottom: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #000;
+      margin-bottom: 30px;
       transition: opacity 0.2s;
     }
 
@@ -46,24 +45,11 @@
       opacity: 0.85;
     }
 
-    .main-box {
-      background-color: #000; /* خلفية المربع سوداء */
-      border: 5px solid;
-      border-image-slice: 1;
-      border-width: 5px;
-      border-image-source: linear-gradient(45deg, #ffd700, #ffb84d, #ffe066); /* مزيج ألوان الإطار */
-      border-radius: 15px;
-      padding: 30px 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      align-items: center;
-    }
-
     .name {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
-      color: #FFD700; /* النص الذهبي */
+      margin: 10px 0;
+      color: #FFD700; /* ذهبي */
     }
   </style>
 </head>
@@ -73,11 +59,9 @@
 
   <button id="startChat" onclick="location.href='chat.html'">Start Chat</button>
 
-  <div class="main-box">
-    <div class="name">CEO & Co-Founder</div>
-    <div class="name">حوده</div>
-    <div class="name">زوز باشا</div>
-  </div>
+  <div class="name">CEO & Co-Founder</div>
+  <div class="name">حوده</div>
+  <div class="name">زوز باشا</div>
 
 </body>
 </html>
