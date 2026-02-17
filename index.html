@@ -145,16 +145,18 @@ window.addEventListener('load', () => {
   const savedEmail = localStorage.getItem('email');
 
   if(savedName && savedEmail){
-    showMain();
+    showMain(); // لو البيانات موجودة، يروح للصفحة الرئيسية مباشرة
   } else {
     const hex1 = document.getElementById('hex1');
     const hex2 = document.getElementById('hex2');
 
+    // تحريك السداسيين
     setTimeout(() => {
       hex1.style.transform = 'translateX(-150px)';
       hex2.style.transform = 'translateX(150px)';
     }, 100);
 
+    // بعد ثانيتين، نعرض Login
     setTimeout(() => {
       document.getElementById('intro').style.display='none';
       document.getElementById('login').style.display='flex';
