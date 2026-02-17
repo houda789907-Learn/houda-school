@@ -118,8 +118,28 @@ body{
 
 <script>
 
+
 window.onload = function(){
 
+  // تشغيل الانيميشن
+  setTimeout(()=>{
+    document.getElementById("hex1").style.transform="translateX(-150px)";
+    document.getElementById("hex2").style.transform="translateX(150px)";
+  },300);
+
+  setTimeout(()=>{
+
+    document.getElementById("intro").style.display="none";
+
+    // هنا التحقق الحقيقي
+    if(localStorage.getItem("userEmail")){
+      document.getElementById("main").style.display="flex";
+    }else{
+      document.getElementById("login").style.display="block";
+    }
+
+  },2500);
+}
   setTimeout(()=>{
     document.getElementById("hex1").style.transform="translateX(-150px)";
     document.getElementById("hex2").style.transform="translateX(150px)";
