@@ -1,142 +1,67 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h1>أهلا بك في صديق الوحدة</h1>
-<style>
-  /* ===== صفحة الدخول ===== */
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #FFD700;
-    height: 100%;
-    overflow: hidden;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صديق الوحدة</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000; /* أسود */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #FFD700; /* النص الذهبي */
+    }
 
-  #intro {
-    position: absolute;
-    top:0; left:0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 50px;
-    z-index: 10;
-  }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #FFD700;
+    }
 
-  .hex {
-    width: 100px;
-    height: 55px;
-    background-color: #FFD700;
-    clip-path: polygon(
-      25% 0%, 75% 0%, 
-      100% 50%, 75% 100%, 
-      25% 100%, 0% 50%
-    );
-    transform: translateX(0);
-    transition: transform 1s ease;
-  }
+    #startChat {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #FFD700; /* ذهبي */
+      border: none;
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      margin-bottom: 30px;
+      transition: opacity 0.2s;
+    }
 
-  #welcome {
-    position: absolute;
-    color: #FFD700;
-    font-size: 32px;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 1s ease;
-  }
+    #startChat:hover {
+      opacity: 0.85;
+    }
 
-  /* ===== الصفحة الرئيسية ===== */
-  #main {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    color: #FFD700;
-  }
-
-  #main h1 {
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-
-  #startChat {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #FFD700;
-    border: none;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000;
-    margin-bottom: 30px;
-    transition: opacity 0.2s;
-  }
-
-  #startChat:hover {
-    opacity: 0.85;
-  }
-
-  .name {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #FFD700;
-  }
-
-</style>
+    .name {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #FFD700; /* ذهبي */
+    }
+  </style>
 </head>
 <body>
 
-  <!-- صفحة الدخول -->
-  <div id="intro">
-    <div class="hex" id="hex1"></div>
-    <div class="hex" id="hex2"></div>
-    <div id="welcome">Welcome</div>
-  </div>
+  <h1>أهلا بك في صديق الوحدة</h1>
 
-  <!-- الصفحة الرئيسية -->
-  <div id="main">
-    <h1>أهلا بك في صديق الوحدة</h1>
-    <button id="startChat" onclick="location.href='chat.html'">Start Chat</button>
-    <div class="name">CEO & Co-Founder</div>
-    <div class="name">حوده</div>
-    <div class="name">زوز باشا</div>
-  </div>
+  <button id="startChat" onclick="location.href='chat.html'">Start Chat</button>
 
-<script>
-  // بداية الانيميشن عند تحميل الصفحة
-  window.addEventListener('load', () => {
-    const hex1 = document.getElementById('hex1');
-    const hex2 = document.getElementById('hex2');
-    const welcome = document.getElementById('welcome');
-    
-    // تحريك السداسيين للخارج
-    setTimeout(() => {
-      hex1.style.transform = 'translateX(-150px)';
-      hex2.style.transform = 'translateX(150px)';
-      welcome.style.opacity = 1;
-    }, 100);
-
-    // بعد ثانيتين، اخفاء الانيميشن واظهار الصفحة الرئيسية
-    setTimeout(() => {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('main').style.display = 'flex';
-    }, 2000);
-  });
-</script>
+  <div class="name">CEO & Co-Founder</div>
+  <div class="name">حوده</div>
+  <div class="name">زوز باشا</div>
 
 </body>
 </html>
