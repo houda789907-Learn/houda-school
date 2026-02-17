@@ -184,8 +184,10 @@ function toggleMenu(){
 }
 
 function logout(){
-  localStorage.clear();
+  localStorage.removeItem("userName");
+  localStorage.removeItem("userEmail");
   window.location.href="index.html";
+}
 }
 
 function clearChat(){
