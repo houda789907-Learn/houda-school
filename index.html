@@ -146,23 +146,36 @@
 </div>
 
 <script>
-  // Intro Animation
+  function showMain() {
+    document.getElementById('intro').style.display='none';
+    document.getElementById('login').style.display='none';
+    document.getElementById('main').style.display='flex';
+  }
+
   window.addEventListener('load', () => {
-    const hex1 = document.getElementById('hex1');
-    const hex2 = document.getElementById('hex2');
-    const introText = document.getElementById('introText');
+    const savedName = localStorage.getItem('fullName');
+    const savedEmail = localStorage.getItem('email');
 
-    setTimeout(() => {
-      hex1.style.transform = 'translateX(-150px)';
-      hex2.style.transform = 'translateX(150px)';
-      introText.style.opacity = 1;
-    }, 100);
+    if(savedName && savedEmail){
+      // لو محفوظين، نروح للصفحة الرئيسية مباشرة
+      showMain();
+    } else {
+      const hex1 = document.getElementById('hex1');
+      const hex2 = document.getElementById('hex2');
+      const introText = document.getElementById('introText');
 
-    // بعد 2 ثانية، نروح للـ Login
-    setTimeout(() => {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('login').style.display = 'flex';
-    }, 2000);
+      setTimeout(() => {
+        hex1.style.transform = 'translateX(-150px)';
+        hex2.style.transform = 'translateX(150px)';
+        introText.style.opacity = 1;
+      }, 100);
+
+      // بعد 2 ثانية، نروح للـ Login
+      setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('login').style.display = 'flex';
+      }, 2000);
+    }
   });
 
   // Login function
@@ -171,9 +184,11 @@
     const email = document.getElementById('email').value.trim();
 
     if(name && email){
-      // ممكن تحفظ الاسم والإيميل لو حبيت
-      document.getElementById('login').style.display='none';
-      document.getElementById('main').style.display='flex';
+      // نحفظ الاسم والإيميل في Local Storage
+      localStorage.setItem('fullName', name);
+      localStorage.setItem('email', email);
+
+      showMain();
     } else {
       alert("من فضلك اكتب الاسم الثلاثي والإيميل");
     }
