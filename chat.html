@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahmoud AI Chat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #f7f7f8;
+    }
+
+    header {
+      padding: 15px;
+      background-color: #0d6efd;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #chatBox {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: #0d6efd;
+      color: white;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .ai {
+      background-color: #e4e6eb;
+      color: black;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    #inputContainer {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      background-color: white;
+    }
+
+    #userMessage {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 16px;
+    }
+
+    #sendBtn {
+      margin-left: 10px;
+      padding: 10px 15px;
+      background-color: #0d6efd;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #sendBtn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Mahmoud AI</header>
+
+  <div id="chatBox"></div>
+
+  <div id="inputContainer">
+    <input type="text" id="userMessage" placeholder="اكتب رسالتك هنا">
+    <button id="sendBtn">Send</button>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const userInput = document.getElementById('userMessage');
+    const sendBtn = document.getElementById('sendBtn');
+
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      // عرض رسالة المستخدم
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message user';
+      userDiv.innerText = message;
+      chatBox.appendChild(userDiv);
+
+      userInput.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      // هنا رابط الـ Backend بتاعك
+      try {
+        const response = await fetch('https://your-backend-link/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        const aiDiv = document.createElement('div');
+        aiDiv.className = 'message ai';
+        aiDiv.innerText = data.reply;
+        chatBox.appendChild(aiDiv);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+      } catch (err) {
+        console.error(err);
+        const aiDiv = document.createElement('div');
+        aiDiv.className = 'message ai';
+        aiDiv.innerText = "هناك خطأ، حاول مرة أخرى.";
+        chatBox.appendChild(aiDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
