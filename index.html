@@ -8,88 +8,51 @@
 body, html {
   margin:0; padding:0;
   font-family: Arial, sans-serif;
-  background-color: #000;
-  color:#FFD700;
+  background-color: #000; /* أسود */
+  color:#FFD700; /* ذهبي */
   height:100%;
-  overflow:hidden;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-/* Intro Animation */
-#intro {
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:50px;
-  flex-direction:row;
-  z-index:10;
-}
-.hex {
-  width:100px; height:55px;
-  background-color:#FFD700;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  transform: translateX(0);
-  transition: transform 1s ease;
-}
-#introText {
-  position:absolute;
-  top:20%;
-  font-size:28px;
-  font-weight:bold;
-  color:#FFD700;
-  opacity:1;
-  animation: float 2s ease-in-out infinite alternate;
-}
-@keyframes float {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
-}
-
-/* Main Page */
 #main {
-  display:none;
+  display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  height:100vh;
   text-align:center;
-  color:#FFD700;
+  gap:20px;
 }
-#main h1 { font-size:36px; margin-bottom:30px; }
+
+#main h1 {
+  font-size:36px;
+  font-weight:bold;
+}
+
 #startChat {
-  width:80px; height:80px;
-  border-radius:50%;
+  width:120px;
+  height:50px;
+  border-radius:25px;
   background-color:#FFD700;
   border:none;
   font-weight:bold;
   font-size:18px;
   cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   color:#000;
-  margin-bottom:30px;
+  margin:10px 0;
 }
-.name { font-size:22px; font-weight:bold; margin:10px 0; }
+
+.name {
+  font-size:22px;
+  font-weight:bold;
+  margin:5px 0;
+}
 
 </style>
 </head>
 <body>
 
-<!-- Intro -->
-<div id="intro">
-  <div class="hex" id="hex1"></div>
-  <div class="hex" id="hex2"></div>
-  <div id="introText">Yeeeaaa booodyyy</div>
-</div>
-
-<!-- Main Page -->
 <div id="main">
   <h1>أهلا بك في Gangno AI</h1>
   <button id="startChat" onclick="location.href='chat.html'">Start Chat</button>
@@ -97,29 +60,6 @@ body, html {
   <div class="name">حوده</div>
   <div class="name">زوز باشا</div>
 </div>
-
-<script>
-function showMain() {
-  document.getElementById('intro').style.display='none';
-  document.getElementById('main').style.display='flex';
-}
-
-window.addEventListener('load', () => {
-  const hex1 = document.getElementById('hex1');
-  const hex2 = document.getElementById('hex2');
-
-  // تحريك السداسيين
-  setTimeout(() => {
-    hex1.style.transform = 'translateX(-150px)';
-    hex2.style.transform = 'translateX(150px)';
-  }, 100);
-
-  // بعد ثانيتين، نعرض الصفحة الرئيسية
-  setTimeout(() => {
-    showMain();
-  }, 2000);
-});
-</script>
 
 </body>
 </html>
