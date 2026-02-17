@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gango AI</title>
+<title>Gango AI Chat</title>
 
 <style>
 body{
@@ -184,10 +184,8 @@ function toggleMenu(){
 }
 
 function logout(){
-  localStorage.removeItem("userName");
-  localStorage.removeItem("userEmail");
+  // مجرد رجوع للصفحة الرئيسية بدون حذف الإيميل
   window.location.href="index.html";
-}
 }
 
 function clearChat(){
