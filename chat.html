@@ -272,41 +272,8 @@ function startVoice(){
     <button onclick="sendMessage()">إرسال</button>
 
     <script>
-        // 👇 حط التوكن بتاعك هنا بين علامتي التنصيص
-        const GITHUB_TOKEN = ' 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'
+      
         
-        async function sendMessage() {
-            const input = document.getElementById('user-input');
-            const msg = input.value.trim();
-            if (!msg) return;
-            
-            const chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML += `<p><strong>👤 أنت:</strong> ${msg}</p>`;
-            input.value = '';
-            
-            try {
-                const res = await fetch('https://models.github.ai/inference/chat/completions', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        model: 'openai/gpt-4o-mini',
-                        messages: [{ role: 'user', content: msg }]
-                    })
-                });
-                
-                const data = await res.json();
-                const reply = data.choices[0].message.content;
-                chatBox.innerHTML += `<p><strong>🤖 Gango AI:</strong> ${reply}</p>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-                
-            } catch (e) {
-                chatBox.innerHTML += `<p style="color:red">❌ خطأ: ${e.message}</p>`;
-            }
-        }
-    </script>
 </body>
 </html>
 
